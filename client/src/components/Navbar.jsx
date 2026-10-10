@@ -25,9 +25,9 @@ export default function Navbar() {
             T
           </span>
           <span className="text-lg font-bold tracking-tight text-gray-900">
-            Template
+            Tem
             <span className="bg-gradient-to-r from-teal-600 to-sky-600 bg-clip-text text-transparent">
-              Store
+              po
             </span>
           </span>
         </Link>

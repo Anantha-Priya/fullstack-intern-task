@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const unsplash = (id) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=400&q=70`
@@ -22,6 +22,15 @@ const hidden = 'z-0 translate-x-28 -translate-y-6 rotate-6 scale-75 opacity-0'
 
 export default function AuthLayout({ children }) {
   const [active, setActive] = useState(0)
+  const [cardStill, setCardStill] = useState(false)
+  const cardRef = useRef(null)
+
+  // Once the card is clicked it stays still until the user clicks somewhere else
+  useEffect(() => {
+    const onPointerDown = (e) => setCardStill(!!cardRef.current?.contains(e.target))
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => document.removeEventListener('pointerdown', onPointerDown)
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => setActive((a) => (a + 1) % templates.length), 3000)
@@ -98,7 +107,9 @@ export default function AuthLayout({ children }) {
       </div>
 
       <div className="flex items-center justify-center px-4 py-8 lg:overflow-y-auto lg:py-6">
-        <div className="w-full max-w-md">{children}</div>
+        <div ref={cardRef} data-still={cardStill} className="animate-breathe w-full max-w-md">
+          {children}
+        </div>
       </div>
     </div>
   )

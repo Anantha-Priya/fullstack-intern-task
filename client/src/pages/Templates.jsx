@@ -10,6 +10,8 @@ export default function Templates() {
   const [favoriteIds, setFavoriteIds] = useState(new Set())
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [search, setSearch] = useState('')
+  const [category, setCategory] = useState('All')
   const { isLoggedIn, user } = useAuth()
   const firstName = user?.name?.trim().split(' ')[0]
   const navigate = useNavigate()
@@ -57,6 +59,17 @@ export default function Templates() {
     }
   }
 
+  const categories = ['All', ...new Set(templates.map((t) => t.category))]
+
+  const query = search.trim().toLowerCase()
+  const filtered = templates.filter(
+    (t) =>
+      (category === 'All' || t.category === category) &&
+      (!query ||
+        t.name.toLowerCase().includes(query) ||
+        t.description.toLowerCase().includes(query))
+  )
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-6">
       <PageHeader
@@ -75,16 +88,75 @@ export default function Templates() {
       {loading ? (
         <p className="text-gray-500">Loading templates...</p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {templates.map((template) => (
-            <TemplateCard
-              key={template.id}
-              template={template}
-              isFavorite={favoriteIds.has(template.id)}
-              onToggle={handleToggle}
-            />
-          ))}
-        </div>
+        <>
+          <div className="mb-6 space-y-4">
+            <div className="relative">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <path strokeLinecap="round" d="M20 20l-3.5-3.5" />
+              </svg>
+              <input
+                type="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search templates..."
+                aria-label="Search templates"
+                className="w-full rounded-xl border border-gray-200 bg-white py-3 pl-12 pr-4 shadow-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+              />
+            </div>
+
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+              {categories.map((name) => (
+                <button
+                  key={name}
+                  onClick={() => setCategory(name)}
+                  aria-pressed={category === name}
+                  className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+                    category === name
+                      ? 'bg-gradient-to-r from-teal-600 to-sky-600 text-white shadow'
+                      : 'bg-white text-gray-700 ring-1 ring-gray-200 hover:bg-teal-50 hover:text-teal-700'
+                  }`}
+                >
+                  {name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {filtered.length === 0 ? (
+            <div className="rounded-2xl bg-white p-10 text-center text-gray-600 shadow-sm ring-1 ring-gray-100">
+              <p className="text-lg font-semibold text-gray-900">No templates found 🔍</p>
+              <p className="mt-1 text-sm">Try a different search or category.</p>
+              <button
+                onClick={() => {
+                  setSearch('')
+                  setCategory('All')
+                }}
+                className="mt-4 rounded-full bg-gradient-to-r from-teal-600 to-sky-600 px-5 py-2 text-sm font-medium text-white shadow hover:brightness-110"
+              >
+                Clear filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {filtered.map((template) => (
+                <TemplateCard
+                  key={template.id}
+                  template={template}
+                  isFavorite={favoriteIds.has(template.id)}
+                  onToggle={handleToggle}
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   )
