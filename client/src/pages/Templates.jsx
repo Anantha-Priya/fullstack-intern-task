@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import api from '../api/axios'
 import { useAuth } from '../context/AuthContext'
 import TemplateCard from '../components/TemplateCard'
+import PageHeader from '../components/PageHeader'
 
 export default function Templates() {
   const [templates, setTemplates] = useState([])
@@ -57,7 +58,10 @@ export default function Templates() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-6">
-      <h1 className="mb-6 text-2xl font-bold">Templates</h1>
+      <PageHeader
+        title="Find your next template"
+        subtitle="Browse ready-made designs and save the ones you love."
+      />
 
       {error && (
         <p className="mb-4 rounded bg-red-100 p-2 text-sm text-red-700">{error}</p>

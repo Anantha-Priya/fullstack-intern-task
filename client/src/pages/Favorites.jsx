@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../api/axios'
 import TemplateCard from '../components/TemplateCard'
+import PageHeader from '../components/PageHeader'
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([])
@@ -34,7 +35,10 @@ export default function Favorites() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-6">
-      <h1 className="mb-6 text-2xl font-bold">My Favorites</h1>
+      <PageHeader
+        title="My Favorites"
+        subtitle="The templates you've saved, all in one place."
+      />
 
       {error && (
         <p className="mb-4 rounded bg-red-100 p-2 text-sm text-red-700">{error}</p>

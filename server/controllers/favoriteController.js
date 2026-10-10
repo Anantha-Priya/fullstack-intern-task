@@ -1,4 +1,5 @@
 const db = require('../db/db');
+const formatTemplate = require('../utils/formatTemplate');
 
 // POST /api/favorites/:templateId
 exports.addFavorite = async (req, res) => {
@@ -38,7 +39,7 @@ exports.getFavorites = async (req, res) => {
       .where('favorites.user_id', req.user.id)
       .select('templates.*');
 
-    res.json(favorites);
+    res.json(favorites.map(formatTemplate));
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });

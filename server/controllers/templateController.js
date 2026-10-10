@@ -1,10 +1,11 @@
 const db = require('../db/db');
+const formatTemplate = require('../utils/formatTemplate');
 
 // GET /api/templates
 exports.getAllTemplates = async (req, res) => {
   try {
     const templates = await db('templates').select();
-    res.json(templates);
+    res.json(templates.map(formatTemplate));
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
@@ -24,7 +25,7 @@ exports.getTemplateById = async (req, res) => {
       return res.status(404).json({ message: 'Template not found' });
     }
 
-    res.json(template);
+    res.json(formatTemplate(template));
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });

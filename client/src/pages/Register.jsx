@@ -37,49 +37,62 @@ export default function Register() {
     }
   }
 
+  const inputClass =
+    'mb-3 w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200'
+
   return (
-    <div className="mx-auto mt-10 max-w-md px-4">
-      <form onSubmit={handleSubmit} className="rounded-lg bg-white p-6 shadow">
-        <h1 className="mb-4 text-2xl font-bold">Create account</h1>
+    <div className="mx-auto mt-12 max-w-md px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-gray-100"
+      >
+        <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-6 text-white">
+          <h1 className="text-2xl font-bold">Create account</h1>
+          <p className="mt-1 text-sm text-indigo-100">Join to save the templates you love.</p>
+        </div>
 
-        {error && (
-          <p className="mb-4 rounded bg-red-100 p-2 text-sm text-red-700">{error}</p>
-        )}
+        <div className="p-6">
+          {error && (
+            <p className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700 ring-1 ring-red-200">{error}</p>
+          )}
 
-        <input
-          name="name"
-          placeholder="Name"
-          value={form.name}
-          onChange={handleChange}
-          className="mb-3 w-full rounded border p-2"
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          className="mb-3 w-full rounded border p-2"
-        />
-	<PasswordInput
- 	 name="password"
- 	 placeholder="Password (min 6 characters)"
-	 value={form.password}
- 	 onChange={handleChange}
- 	 wrapperClassName="mb-4"
-	/>
+          <input
+            name="name"
+            placeholder="Name"
+            value={form.name}
+            onChange={handleChange}
+            className={inputClass}
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            className={inputClass}
+          />
+          <PasswordInput
+            name="password"
+            placeholder="Password (min 6 characters)"
+            value={form.password}
+            onChange={handleChange}
+            wrapperClassName="mb-5"
+          />
 
-        <button
-          disabled={loading}
-          className="w-full rounded bg-blue-600 p-2 text-white hover:bg-blue-700 disabled:opacity-50"
-        >
-          {loading ? 'Creating...' : 'Register'}
-        </button>
+          <button
+            disabled={loading}
+            className="w-full rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 p-3 font-semibold text-white shadow transition hover:shadow-lg hover:brightness-110 disabled:opacity-50"
+          >
+            {loading ? 'Creating...' : 'Register'}
+          </button>
 
-        <p className="mt-4 text-center text-sm">
-          Already have an account?{' '}
-          <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
-        </p>
+          <p className="mt-5 text-center text-sm text-gray-600">
+            Already have an account?{' '}
+            <Link to="/login" className="font-semibold text-indigo-600 hover:underline">
+              Login
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   )

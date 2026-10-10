@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Templates from './pages/Templates'
 import Favorites from './pages/Favorites'
+import TemplateDetails from './pages/TemplateDetails'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/templates" element={<Templates />} />
+            <Route path="/templates/:id" element={<TemplateDetails />} />
             <Route
               path="/favorites"
               element={
