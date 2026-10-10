@@ -10,15 +10,15 @@ export default function TemplateCard({ template, isFavorite, onToggle }) {
           loading="lazy"
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/50 via-transparent to-transparent" />
-        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-indigo-700 shadow-sm">
+        <div className="absolute inset-0 bg-gradient-to-t from-teal-950/50 via-transparent to-transparent" />
+        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-teal-700 shadow-sm">
           {template.category}
         </span>
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-lg font-semibold text-gray-900">
-          <Link to={`/templates/${template.id}`} className="hover:text-indigo-600">
+          <Link to={`/templates/${template.id}`} className="hover:text-teal-600">
             {template.name}
           </Link>
         </h3>
@@ -30,7 +30,7 @@ export default function TemplateCard({ template, isFavorite, onToggle }) {
           className={`mt-5 flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
             isFavorite
               ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow hover:brightness-110'
-              : 'border border-gray-200 text-gray-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700'
+              : 'border border-gray-200 text-gray-700 hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700'
           }`}
         >
           <svg

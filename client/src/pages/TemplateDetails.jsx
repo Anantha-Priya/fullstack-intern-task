@@ -73,7 +73,7 @@ export default function TemplateDetails() {
         <p className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700 ring-1 ring-red-200">
           {error || 'Template not found'}
         </p>
-        <Link to="/templates" className="text-indigo-600 hover:underline">
+        <Link to="/templates" className="text-teal-600 hover:underline">
           Back to templates
         </Link>
       </div>
@@ -86,7 +86,7 @@ export default function TemplateDetails() {
     <div className="mx-auto max-w-6xl px-4 py-6">
       <Link
         to="/templates"
-        className="mb-5 inline-flex items-center gap-1 text-sm font-medium text-indigo-600 hover:underline"
+        className="mb-5 inline-flex items-center gap-1 text-sm font-medium text-teal-600 hover:underline"
       >
         &larr; Back to templates
       </Link>
@@ -99,13 +99,13 @@ export default function TemplateDetails() {
             alt={template.name}
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-teal-950/40 via-transparent to-transparent" />
         </div>
 
         <div className="flex flex-col lg:min-h-0">
           <div className="flex-1 overflow-y-auto p-6 pb-4 sm:p-8 sm:pb-4">
             <div className="flex items-center gap-3">
-              <span className="shrink-0 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
+              <span className="shrink-0 rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
                 {template.category}
               </span>
               {toast?.type === 'success' && (
@@ -120,7 +120,7 @@ export default function TemplateDetails() {
 
             <h1 className="mt-3 text-3xl font-bold text-gray-900">{template.name}</h1>
 
-            <p className="mt-2 bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-3xl font-bold text-transparent">
+            <p className="mt-2 bg-gradient-to-r from-teal-600 to-sky-600 bg-clip-text text-3xl font-bold text-transparent">
               {price > 0 ? `$${price.toFixed(2)}` : 'Free'}
             </p>
 
@@ -136,7 +136,7 @@ export default function TemplateDetails() {
                     <li key={feature} className="flex items-start gap-2 text-gray-700">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="mt-0.5 h-5 w-5 shrink-0 text-indigo-600"
+                        className="mt-0.5 h-5 w-5 shrink-0 text-teal-600"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -155,7 +155,7 @@ export default function TemplateDetails() {
           <div className="flex flex-col gap-3 px-6 pb-6 sm:flex-row sm:px-8 sm:pb-8">
             <button
               onClick={handleUse}
-              className="flex-1 rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-5 py-3 font-semibold text-white shadow transition hover:shadow-lg hover:brightness-110"
+              className="flex-1 rounded-xl bg-gradient-to-r from-teal-600 to-sky-600 px-5 py-3 font-semibold text-white shadow transition hover:shadow-lg hover:brightness-110"
             >
               Use this template
             </button>
@@ -165,7 +165,7 @@ export default function TemplateDetails() {
               className={`flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold transition ${
                 isFavorite
                   ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow hover:brightness-110'
-                  : 'border border-gray-200 text-gray-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700'
+                  : 'border border-gray-200 text-gray-700 hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700'
               }`}
             >
               <svg

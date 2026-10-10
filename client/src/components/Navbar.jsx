@@ -4,12 +4,12 @@ import { useAuth } from '../context/AuthContext'
 const linkClass = ({ isActive }) =>
   `rounded-full px-3 py-1.5 transition ${
     isActive
-      ? 'bg-indigo-50 font-semibold text-indigo-700'
-      : 'text-gray-600 hover:bg-gray-100 hover:text-indigo-700'
+      ? 'bg-teal-50 font-semibold text-teal-700'
+      : 'text-gray-600 hover:bg-gray-100 hover:text-teal-700'
   }`
 
 export default function Navbar() {
-  const { isLoggedIn, user, logout } = useAuth()
+  const { isLoggedIn, logout } = useAuth()
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -21,12 +21,12 @@ export default function Navbar() {
     <nav className="sticky top-0 z-10 border-b border-white/60 bg-white/80 shadow-sm backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/templates" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 text-lg font-bold text-white shadow">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 via-cyan-500 to-sky-500 text-lg font-bold text-white shadow">
             T
           </span>
           <span className="text-lg font-bold tracking-tight text-gray-900">
             Template
-            <span className="bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-teal-600 to-sky-600 bg-clip-text text-transparent">
               Store
             </span>
           </span>
@@ -37,7 +37,6 @@ export default function Navbar() {
           {isLoggedIn ? (
             <>
               <NavLink to="/favorites" className={linkClass}>My Favorites</NavLink>
-              <span className="mx-1 hidden text-gray-500 md:inline">Hi, {user?.name}</span>
               <button
                 onClick={handleLogout}
                 className="rounded-full border border-gray-300 px-4 py-1.5 font-medium text-gray-700 transition hover:border-red-300 hover:bg-red-50 hover:text-red-600"
@@ -50,7 +49,7 @@ export default function Navbar() {
               <NavLink to="/login" className={linkClass}>Login</NavLink>
               <Link
                 to="/register"
-                className="rounded-full bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-4 py-1.5 font-medium text-white shadow transition hover:shadow-md hover:brightness-110"
+                className="rounded-full bg-gradient-to-r from-teal-600 to-sky-600 px-4 py-1.5 font-medium text-white shadow transition hover:shadow-md hover:brightness-110"
               >
                 Register
               </Link>

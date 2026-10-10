@@ -36,8 +36,8 @@ export default function Favorites() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-6">
       <PageHeader
-        title="My Favorites"
-        subtitle="The templates you've saved, all in one place."
+        title="Look what you’ve picked 😍"
+        subtitle="Your favorite templates, waiting for your next big idea 🚀"
       />
 
       {error && (
@@ -49,7 +49,7 @@ export default function Favorites() {
       ) : favorites.length === 0 ? (
         <p className="text-gray-600">
           You have no favorites yet.{' '}
-          <Link to="/templates" className="text-blue-600 hover:underline">
+          <Link to="/templates" className="text-teal-600 hover:underline">
             Browse templates
           </Link>
         </p>

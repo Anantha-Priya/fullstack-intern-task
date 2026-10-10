@@ -8,13 +8,13 @@ export default function PasswordInput({ wrapperClassName = '', ...props }) {
       <input
         {...props}
         type={show ? 'text' : 'password'}
-        className="w-full rounded-xl border border-gray-300 bg-white p-3 pr-11 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+        className="w-full rounded-xl border border-gray-300 bg-white p-3 pr-11 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
       />
       <button
         type="button"
         onClick={() => setShow(!show)}
         aria-label={show ? 'Hide password' : 'Show password'}
-        className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-indigo-600"
+        className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-teal-600"
       >
         {show ? (
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

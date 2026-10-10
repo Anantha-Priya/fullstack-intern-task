@@ -10,7 +10,8 @@ export default function Templates() {
   const [favoriteIds, setFavoriteIds] = useState(new Set())
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const { isLoggedIn } = useAuth()
+  const { isLoggedIn, user } = useAuth()
+  const firstName = user?.name?.trim().split(' ')[0]
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -59,8 +60,12 @@ export default function Templates() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-6">
       <PageHeader
-        title="Find your next template"
-        subtitle="Browse ready-made designs and save the ones you love."
+        title={
+          isLoggedIn && firstName
+            ? `Hey ${firstName}, Find a template you’ll love ✨`
+            : 'Find a template you’ll love ✨'
+        }
+        subtitle="Tap the heart on your favorites and keep them all in one place 💖"
       />
 
       {error && (

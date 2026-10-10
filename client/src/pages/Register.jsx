@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import api from '../api/axios'
 import { useAuth } from '../context/AuthContext'
 import PasswordInput from '../components/PasswordInput'
+import AuthLayout from '../components/AuthLayout'
 
 export default function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '' })
@@ -38,17 +39,17 @@ export default function Register() {
   }
 
   const inputClass =
-    'mb-3 w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200'
+    'mb-3 w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200'
 
   return (
-    <div className="mx-auto mt-12 max-w-md px-4">
+    <AuthLayout>
       <form
         onSubmit={handleSubmit}
         className="overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-gray-100"
       >
-        <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-6 text-white">
-          <h1 className="text-2xl font-bold">Create account</h1>
-          <p className="mt-1 text-sm text-indigo-100">Join to save the templates you love.</p>
+        <div className="bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-600 px-6 py-6 text-white">
+          <h1 className="text-2xl font-bold">Get started 🚀</h1>
+          <p className="mt-1 text-sm text-teal-100">Create your account and build your own template collection</p>
         </div>
 
         <div className="p-6">
@@ -81,19 +82,19 @@ export default function Register() {
 
           <button
             disabled={loading}
-            className="w-full rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 p-3 font-semibold text-white shadow transition hover:shadow-lg hover:brightness-110 disabled:opacity-50"
+            className="w-full rounded-xl bg-gradient-to-r from-teal-600 to-sky-600 p-3 font-semibold text-white shadow transition hover:shadow-lg hover:brightness-110 disabled:opacity-50"
           >
             {loading ? 'Creating...' : 'Register'}
           </button>
 
           <p className="mt-5 text-center text-sm text-gray-600">
             Already have an account?{' '}
-            <Link to="/login" className="font-semibold text-indigo-600 hover:underline">
+            <Link to="/login" className="font-semibold text-teal-600 hover:underline">
               Login
             </Link>
           </p>
         </div>
       </form>
-    </div>
+    </AuthLayout>
   )
 }

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import api from '../api/axios'
 import { useAuth } from '../context/AuthContext'
 import PasswordInput from '../components/PasswordInput'
+import AuthLayout from '../components/AuthLayout'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
@@ -35,14 +36,14 @@ export default function Login() {
   }
 
   return (
-    <div className="mx-auto mt-12 max-w-md px-4">
+    <AuthLayout>
       <form
         onSubmit={handleSubmit}
         className="overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-gray-100"
       >
-        <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-6 text-white">
-          <h1 className="text-2xl font-bold">Welcome back</h1>
-          <p className="mt-1 text-sm text-indigo-100">Log in to see your favorite templates.</p>
+        <div className="bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-600 px-6 py-6 text-white">
+          <h1 className="text-2xl font-bold">Welcome back 👋</h1>
+          <p className="mt-1 text-sm text-teal-100">Log in to see your favorite templates.</p>
         </div>
 
         <div className="p-6">
@@ -56,7 +57,7 @@ export default function Login() {
             placeholder="Email"
             value={form.email}
             onChange={handleChange}
-            className="mb-3 w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+            className="mb-3 w-full rounded-xl border border-gray-300 bg-white p-3 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
           />
           <PasswordInput
             name="password"
@@ -68,19 +69,19 @@ export default function Login() {
 
           <button
             disabled={loading}
-            className="w-full rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 p-3 font-semibold text-white shadow transition hover:shadow-lg hover:brightness-110 disabled:opacity-50"
+            className="w-full rounded-xl bg-gradient-to-r from-teal-600 to-sky-600 p-3 font-semibold text-white shadow transition hover:shadow-lg hover:brightness-110 disabled:opacity-50"
           >
             {loading ? 'Logging in...' : 'Login'}
           </button>
 
           <p className="mt-5 text-center text-sm text-gray-600">
             New here?{' '}
-            <Link to="/register" className="font-semibold text-indigo-600 hover:underline">
+            <Link to="/register" className="font-semibold text-teal-600 hover:underline">
               Create an account
             </Link>
           </p>
         </div>
       </form>
-    </div>
+    </AuthLayout>
   )
 }
