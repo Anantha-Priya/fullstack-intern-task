@@ -1,15 +1,25 @@
+const base = {
+  client: 'sqlite3',
+  useNullAsDefault: true,
+  migrations: {
+    directory: './migrations',
+  },
+  seeds: {
+    directory: './seeds',
+  },
+};
+
 module.exports = {
   development: {
-    client: 'sqlite3',
+    ...base,
     connection: {
       filename: './dev.sqlite3',
     },
-    useNullAsDefault: true,
-    migrations: {
-      directory: './migrations',
-    },
-    seeds: {
-      directory: './seeds',
+  },
+  production: {
+    ...base,
+    connection: {
+      filename: './prod.sqlite3',
     },
   },
 };
