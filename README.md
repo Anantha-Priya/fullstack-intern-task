@@ -5,6 +5,14 @@ mark templates as favorites, and view them in a "My Favorites" section.
 
 Built for the **Gnxtace Technologies - Full Stack Web Developer Intern** technical task.
 
+## Live Demo
+
+- **Frontend:** https://fullstack-intern-task-wheat.vercel.app
+- **Backend API:** https://fullstack-intern-task-7joa.onrender.com/api
+
+> The backend runs on Render's free tier and sleeps after about 15 minutes of inactivity.
+> The first request can take 30-60 seconds to wake it up. Please wait a moment, then refresh.
+
 ## Features
 
 - Register and login with JWT authentication (passwords hashed with bcrypt)
